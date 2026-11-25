@@ -23,6 +23,7 @@ export class CatalogPage {
 
   async nextPage() {
     // BEGIN
+    await this.page.getByRole('link', { name: 'Next' }).first().click();
     // END
   }
 }

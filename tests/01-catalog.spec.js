@@ -40,7 +40,11 @@ test('Задание 3', async ({ page }) => {
 test('Задание 4', async ({ page }) => {
   const model = new CatalogPage(page);
   // BEGIN
+  const card = (name) => page.locator('.card').filter({ has: page.getByRole('heading', { name, exact: true }) });
+  await expect(card('Essence Mascara Lash Princess')).toBeVisible();
   await model.nextPage();
+  await expect(card('Essence Mascara Lash Princess')).toHaveCount(0);
+  await expect(page.locator('.card').first()).toBeVisible();
   // END
 });
 
