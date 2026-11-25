@@ -19,7 +19,12 @@ test('Задание 1', async ({ page }) => {
 test('Задание 2', async ({ page }) => {
   const model = new CatalogPage(page);
   // BEGIN
+  const card = (name) => page.locator('.card').filter({ has: page.getByRole('heading', { name, exact: true }) });
+  await expect(card('Apple')).toBeVisible();
   await model.selectBrand('Essence');
+  await expect(page.getByLabel('Essence', { exact: true })).toBeChecked();
+  await expect(card('Essence Mascara Lash Princess')).toBeVisible();
+  await expect(card('Apple')).toHaveCount(0);
   // END
 });
 

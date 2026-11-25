@@ -11,6 +11,7 @@ export class CatalogPage {
 
   async selectBrand(brand) {
     // BEGIN
+    await this.page.getByLabel(brand, { exact: true }).check();
     // END
   }
 
