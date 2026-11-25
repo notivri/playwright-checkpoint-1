@@ -32,6 +32,8 @@ test('Задание 3', async ({ page }) => {
   const model = new CatalogPage(page);
   // BEGIN
   await model.openProduct('Red Lipstick');
+  await expect(page).toHaveURL(/\/products\/4$/);
+  await expect(page.getByRole('heading', { name: 'Red Lipstick', exact: true })).toBeVisible();
   // END
 });
 

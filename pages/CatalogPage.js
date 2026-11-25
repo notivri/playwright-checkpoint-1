@@ -17,6 +17,7 @@ export class CatalogPage {
 
   async openProduct(name) {
     // BEGIN
+    await this.page.getByRole('heading', { name, exact: true }).click();
     // END
   }
 
