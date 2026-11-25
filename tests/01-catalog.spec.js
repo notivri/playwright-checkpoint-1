@@ -8,7 +8,11 @@ test.beforeEach(async ({ page }) => {
 test('Задание 1', async ({ page }) => {
   const model = new CatalogPage(page);
   // BEGIN
+  const card = (name) => page.locator('.card').filter({ has: page.getByRole('heading', { name, exact: true }) });
+  await expect(card('Apple')).toBeVisible();
   await model.search('Red Lipstick');
+  await expect(card('Red Lipstick')).toBeVisible();
+  await expect(card('Apple')).toHaveCount(0);
   // END
 });
 

@@ -5,6 +5,7 @@ export class CatalogPage {
 
   async search(query) {
     // BEGIN
+    await this.page.getByPlaceholder('Search').fill(query);
     // END
   }
 
